@@ -1,8 +1,8 @@
-# React + Vite
+npm run dev
+npm run build
+npm run start
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+i dont have a backend so i am going to put all api in api/file.ts
+these api will have api calls that are then frwded as server-client calls - idk what that means but thats the language vineet understand
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+its build on next.js and i am using vercel rn to deploy it in real time
