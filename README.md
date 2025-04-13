@@ -42,3 +42,6 @@ Theme switch by section Wrap sections in a data-theme="light" or dark and use In
 Scroll to top on nav click Put <ScrollToTop /> in layout or use useEffect in each page
 3D stuff Use @react-three/fiber and load .glb with useGLTF
 Per-page styles Use app/about/page.module.css or Tailwind scoped utility classes
+
+#You should only use those @tailwind directives ONCE 
+in your entire project — and that should be in your global CSS file, like globals.css.
