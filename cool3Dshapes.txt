@@ -1,0 +1,29 @@
+function RotatingSculpture({ scrollY }: RotatingProps) {
+    const ref = useRef<THREE.Mesh>(null!)
+
+    useFrame((state) => {
+        const t = state.clock.getElapsedTime()
+        ref.current.rotation.y = t * 0.3
+        ref.current.position.y = Math.sin(t) * 0.5 + scrollY * 0.005
+    })
+
+    return (
+        <mesh ref={ref}>
+            <torusKnotGeometry args={[1, 0.3, 128, 32]} />
+            <meshNormalMaterial wireframe />
+        </mesh>
+    )
+}
+
+export default function GodSculpture({ scrollY }: { scrollY: number }) {
+    return (
+        <div className="h-screen w-full bg-black">
+            <Canvas camera={{ position: [0, 0, 5] }}>
+                <ambientLight intensity={0.3} />
+                <pointLight position={[10, 10, 10]} />
+                <OrbitControls enableZoom={false} enablePan={false} />
+                <RotatingSculpture scrollY={scrollY} />
+            </Canvas>
+        </div>
+    )
+}

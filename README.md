@@ -43,5 +43,28 @@ Scroll to top on nav click Put <ScrollToTop /> in layout or use useEffect in eac
 3D stuff Use @react-three/fiber and load .glb with useGLTF
 Per-page styles Use app/about/page.module.css or Tailwind scoped utility classes
 
-#You should only use those @tailwind directives ONCE 
+#You should only use those @tailwind directives ONCE
 in your entire project — and that should be in your global CSS file, like globals.css.
+
+#3d sclupture
+🛠️ Tools We’ll Use:
+React Three Fiber (R3F) – React wrapper for Three.js
+
+Drei – Helper components for R3F (lights, controls, etc.)
+
+Framer Motion – For scroll-based transitions
+
+Tailwind CSS – For layout and styling
+
+We created a placeholder rotating 3D shape (like an icosahedron) using:
+
+tsx
+Copy
+Edit
+<icosahedronGeometry args={[1.5, 1]} />
+This was just a cool rotating blob.
+Poly Haven — free 3D models, CC0 license
+
+CGTrader (free section)
+
+Clara.io — check for .glb or .gltf formats

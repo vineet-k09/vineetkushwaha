@@ -1,0 +1,46 @@
+🧩 Once You Have the Model
+Place the .glb or .gltf file inside your /public/models folder.
+
+Use the useGLTF hook from @react-three/drei to load it:
+
+tsx
+Copy
+Edit
+'use client'
+
+import { useGLTF } from '@react-three/drei'
+
+function GreekStatue({ scrollY }: { scrollY: number }) {
+  const { scene } = useGLTF('/models/apollo_statue.glb')
+  const ref = useRef<THREE.Group>(null!)
+
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime()
+    if (ref.current) {
+      ref.current.rotation.y = t * 0.2
+      ref.current.position.y = scrollY * 0.01
+    }
+  })
+
+  return <primitive ref={ref} object={scene} />
+}
+✅ Done. Now your majestic statue rotates and levitates like it’s blessed by Zeus himself.
+
+"Leda and the Swan" (https://skfb.ly/PTUz) by Geoffrey Marchal is licensed under CC Attribution-NonCommercial-ShareAlike (http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+
+
+
+ using @react-three/drei's useGLTF hook,
+
+
+ light is always necessary for rending the thingy
+       <Suspense fallback={null}>
+        <Canvas>
+          <ambientLight intensity={1} />
+          <directionalLight position={[5, 5, 5]} />
+          <Sculpture />
+        </Canvas>
+      </Suspense>
+
+      suspense lets it load properly 
