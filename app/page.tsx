@@ -9,6 +9,7 @@ import {
   Suspense,
   useRef
 } from 'react'
+
 // import Sculpture from '@/components/Sculpture'
 import { Canvas } from '@react-three/fiber';
 import dynamic from 'next/dynamic';
@@ -38,8 +39,29 @@ export default function Home() {
       previousScrollY.current = currentY;
       setScrollY(currentY);
     };
+    //adding this cause when u click scrollY = 0 thus cause issue with smoothness
+    const handleClick = () => {
+      setScrollY(100); // Set scrollY to current position on click
+      triggerAnimation(); // Trigger animation immediately
+    };
+    //adding spacebar as a backup
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (e.code === 'ArrowRight' && !triggered) {
+        triggerAnimation();
+      }
+      if (e.code === 'ArrowLeft' && triggered) {
+        resetAnimation();
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('click', handleClick);
+    window.addEventListener('keydown', handleKeydown);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('click', handleClick); // Cleanup click listener
+      window.removeEventListener('keydown', handleKeydown);
+    }
   }, [triggered, triggerAnimation, resetAnimation]);
 
   //animation listener sculputre
@@ -69,16 +91,33 @@ export default function Home() {
         </Canvas>
       </Suspense>
       {/* for scrolling in mobile */}
-      <div className="h-[100vh]"></div>
+      {/* <div className="h-[100vh]"></div> */}
       {/* Text animation trigger based on the `triggered` state */}
       {triggered && (
         <div className="absolute top-1/3 w-full px-6 flex justify-between">
-          <TextSlideIn from="left" delay={0.2}>
-            Welcome to the Past
-          </TextSlideIn>
-          <TextSlideIn from="right" delay={0.4}>
-            Carved in Code
-          </TextSlideIn>
+          {/* LEFT STACK */}
+          <div className="flex flex-col space-y-2">
+            <TextSlideIn from="left" delay={0.35}>
+              <h1 className="text-3xl uppercase">Welcome to the Past</h1>
+            </TextSlideIn>
+            <TextSlideIn from="left" delay={1}>
+              Made with Love ❤️ <br />
+              by
+            </TextSlideIn>
+            <TextSlideIn from="left" delay={2.0}>
+              <h1 className="text-9xl font-zillaSlab">Vineet Kushwaha</h1>
+            </TextSlideIn>
+          </div>
+
+          {/* RIGHT STACK */}
+          <div className="flex flex-col items-end space-y-2">
+            <TextSlideIn from="right" delay={0.4}>
+              <h1 className="poppins"> Carved in Code </h1>
+            </TextSlideIn>
+            <TextSlideIn from="right" delay={0.4}>
+              Digitally Immortal
+            </TextSlideIn>
+          </div>
         </div>
       )}
 

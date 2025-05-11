@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef } from 'react';
+import React, { JSX, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import { Mesh } from 'three';
@@ -19,7 +19,7 @@ export default function Sculpture(props: JSX.IntrinsicElements['group']) {
 
     useFrame(() => {
         if (ref.current) {
-            ref.current.rotation.y += 0.001;
+            ref.current.rotation.y += 0.003;
         }
     });
 
@@ -28,7 +28,7 @@ export default function Sculpture(props: JSX.IntrinsicElements['group']) {
             ref={ref}
             {...props}
             dispose={null}
-            position-y={-20}
+            position-y={-30}
             position-z={z}
         >
             <primitive object={scene} scale={1} />

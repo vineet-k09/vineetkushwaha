@@ -11,7 +11,13 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+
       },
+      fontFamily: {
+        sans: ['var(--poppins)'], // default font
+        poppins: ['var(--poppins)'],
+        zillaSlab: ["var(--font-zilla-slab)"], // Explicit reference
+      }
     },
   },
   plugins: [],

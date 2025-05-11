@@ -1,7 +1,6 @@
 // components/TextSlideIn.tsx
 'use client';
 import { motion } from 'framer-motion';
-
 type Props = {
     children: React.ReactNode;
     from?: 'left' | 'right' | 'top' | 'bottom';
@@ -25,7 +24,7 @@ export default function TextSlideIn({ children, from = 'left', delay = 0 }: Prop
 
     return (
         <motion.div
-            className="text-3xl font-bold"
+            className="font-bold"
             initial="hidden"
             animate="visible"
             variants={variants}

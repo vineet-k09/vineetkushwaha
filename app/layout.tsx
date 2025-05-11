@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Poppins, Zilla_Slab } from "next/font/google";
 import "./globals.css";
+
+const zillaSlab = Zilla_Slab({
+  subsets: ["latin"],
+  weight: ["400", "700"], // Customize as per need
+  variable: "--font-zilla-slab", // Variable for easy swapping in CSS
+  display: "swap",
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '700'], // customize as needed
+  variable: '--poppins',
+  display: 'swap',
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${zillaSlab.variable} antialiased`}
       >
         {children}
       </body>
