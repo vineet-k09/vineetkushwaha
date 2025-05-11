@@ -68,3 +68,8 @@ Poly Haven — free 3D models, CC0 license
 CGTrader (free section)
 
 Clara.io — check for .glb or .gltf formats
+
+used three js for that sculputure woosh animation and text movement
+
+--legacy-peer-deps to avoid version issues
+-- degraded to react18 for framer and threejs
